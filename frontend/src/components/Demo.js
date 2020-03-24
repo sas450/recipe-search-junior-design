@@ -28,9 +28,8 @@ export default function Tags() {
       <Autocomplete 
         multiple
         id="tags-outlined"
-        options={top100Films}
+        options={validIngredients}
         getOptionLabel={option => option.title}
-        //defaultValue={[top100Films[13]]}
         filterSelectedOptions
         onChange = {(event, value) => console.log(value)}
         renderInput={params => (
@@ -48,7 +47,7 @@ export default function Tags() {
 }
 
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const top100Films = [
+const validIngredients = [
   { title: 'Chicken'},
   { title: 'Cheese'},
   { title: 'Ramen'},

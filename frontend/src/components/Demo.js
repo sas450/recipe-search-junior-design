@@ -15,23 +15,30 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function handleChange(e) {
-  console.log(e.value)
+function handleChange(e,v) {
+  console.log(v)
 }
 
+const validIngredients = [
+  { title: 'Chicken'},
+  { title: 'Cheese'},
+  { title: 'Ramen'},
+  { title: 'Chocolate'},
+  { title: 'Pizza'},
+  { title: 'Chinese Food'},
+];
 
 export default function Tags() {
-  const classes = useStyles();
 
+  const classes = useStyles();
   return (
-    <div className={classes.root}>
       <Autocomplete 
         multiple
         id="tags-outlined"
         options={validIngredients}
         getOptionLabel={option => option.title}
         filterSelectedOptions
-        onChange = {(event, value) => console.log(value)}
+        onChange = {handleChange}
         renderInput={params => (
           <TextField
             {...params}
@@ -42,16 +49,6 @@ export default function Tags() {
           />
         )}
       />
-    </div>
   );
 }
 
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const validIngredients = [
-  { title: 'Chicken'},
-  { title: 'Cheese'},
-  { title: 'Ramen'},
-  { title: 'Chocolate'},
-  { title: 'Pizza'},
-  { title: 'Chinese Food'},
-];

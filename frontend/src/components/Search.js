@@ -5,16 +5,7 @@ import TextField from '@material-ui/core/TextField';
 
 class Search extends React.Component {
 
-    state = {
-        user_ingredients : []
-    }
 
-    handleChange = (e,v) => {
-        this.setState({
-            user_ingredients : v
-        })
-    }
-    
     render() {
 
 
@@ -41,14 +32,13 @@ class Search extends React.Component {
 
 
         return (
-            <div>
                 <Autocomplete 
                 multiple
                 id="tags-outlined"
                 options={validIngredients}
                 getOptionLabel={option => option.title}
                 filterSelectedOptions
-                onChange = {this.handleChange}
+                onChange = {this.props.updateIngredients}
                 renderInput={params => (
                     <TextField
                     {...params}
@@ -59,7 +49,6 @@ class Search extends React.Component {
                     />
                 )}
                 />
-          </div>
         )
     }
 }

@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <Search updateIngredients = {this.updateIngredients}/>
-        <Recipe></Recipe>
+        <Recipe user_ingredients = {this.state.user_ingredients}/>
       </div>
     );
   }

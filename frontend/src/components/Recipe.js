@@ -24,8 +24,17 @@ export default class Recipe extends React.Component {
       return <div>didn't get a person</div>;
     }
 
+    //this is how we access the user ingredient list 
+    //send these in a post request to the backend 
+    //should get a json object back with titles and image urls 
+    //use the componentDidMount above as a template
+    console.log(this.props.user_ingredients)
     return (
-      <div>Fetched</div>
+
+      <div>
+        Placeholder 
+      </div>
+
 /*       <div>
         {}
         

@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## To Run This on your machine
+
+git clone [the url above but no brackets]
+cd frontend
+npm install 
+npm start
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run heehhe:

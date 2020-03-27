@@ -4,15 +4,31 @@ import shortid from "shortid";
 export default class Recipe extends React.Component {
   state = {
     loading: true,
-    recipes: []
+    recipes: [],
+    postId : null
   };
 
-  async componentDidMount() {
+/*   async componentDidMount() {
     const url = "https://jsonplaceholder.typicode.com/photos";
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
     this.setState({ recipes: data, loading: false });
+  } */
+
+  async componentDidMount() {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 	
+        "name" : "From ReactAPp",
+        "price" : "999"
+      })}
+    
+    const url = 'http://localhost:8080/products'
+    const response = await fetch(url, requestOptions);
+    const data = await response.json();
+    this.setState({ postId: data.id , loading : false});
   }
 
   render() {
@@ -20,8 +36,8 @@ export default class Recipe extends React.Component {
       return <div>loading...</div>;
     }
 
-    if (!this.state.recipes.length) {
-      return <div>didn't get a person</div>;
+    if (!this.state.postId) {
+      return <div>didn't get a post</div>;
     }
 
     //this is how we access the user ingredient list 
@@ -32,7 +48,7 @@ export default class Recipe extends React.Component {
     return (
 
       <div>
-        Placeholder 
+        {this.state.postId}
       </div>
 
 /*       <div>

@@ -7,8 +7,6 @@ class Search extends React.Component {
 
 
     render() {
-
-
         const validIngredients = [
             { title: 'Chicken'},
             { title: 'Cheese'},

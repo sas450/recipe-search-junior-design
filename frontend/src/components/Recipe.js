@@ -7,26 +7,6 @@ export default class Recipe extends React.Component {
     recipes: []
   };
 
-  async componentDidMount() {
-    //this.props.user_ingredients[0].title
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ingredientName: "lemon"
-      })
-    };
-
-    const url = "http://localhost:8080/recipes";
-    const response = await fetch(url, requestOptions);
-    const data = await response.json();
-    console.log(data);
-    this.setState({
-      recipes: data,
-      loading: false
-    });
-  }
-
   async componentDidUpdate(prevProps, prevState) {
     if (
       this.props.user_ingredients.length !==
@@ -50,7 +30,7 @@ export default class Recipe extends React.Component {
         recipes: data,
         loading: false
       });
-    } else if(
+    } else if (
       this.props.user_ingredients.length !==
         prevProps.user_ingredients.length &&
       this.props.user_ingredients.length === 0

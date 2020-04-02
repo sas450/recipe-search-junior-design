@@ -14,8 +14,8 @@ export default class Recipe extends React.Component {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: "From ReactAPp",
-        price: "999"
+        name: "From ReactAPp ",
+        price: "69696969"
       })
     };
 

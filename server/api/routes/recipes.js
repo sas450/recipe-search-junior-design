@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const Product = require("../models/product");
+const Recipe = require("../models/recipe");
 
 router.get("/", (req, res, next) => {
-  Product.find()
+  Recipe.find()
     .exec()
     .then(docs => {
       if (docs.length > 0) {
@@ -23,18 +23,19 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  const product = new Product({
+  const recipe = new Recipe({
     _id: new mongoose.Types.ObjectId(),
-    name: req.body.name,
-    price: req.body.price
+    title: req.body.title,
+    url: req.body.url,
+    ingredient: req.body.ingredient
   });
-  product
+  recipe
     .save()
     .then(result => {
       console.log(result);
       res.status(201).json({
-        message: "Handling POST requests to /products",
-        createdProduct: result
+        message: "Handling POST requests to /recipes",
+        createdrecipe: result
       });
     })
     .catch(err => {
@@ -45,9 +46,10 @@ router.post("/", (req, res, next) => {
     });
 });
 
-router.get("/:productId", (req, res, next) => {
-  const id = req.params.productId;
-  Product.findById(id)
+router.get("/:ingredientName", (req, res, next) => {
+  const ingredientName = req.params.ingredientName;
+  console.log(ingredientName);
+  Recipe.find({ ingredient: new RegExp(ingredientName, "i") })
     .exec()
     .then(doc => {
       console.log("From database", doc);
@@ -65,12 +67,13 @@ router.get("/:productId", (req, res, next) => {
     });
 });
 
-router.patch("/:productId", (req, res, next) => {
+router.patch("/:recipeId", (req, res, next) => {
   const updateOps = {};
   for (const ops of req.body) {
     updateOps[ops.propName] = ops.value;
   }
-  Product.findByIdAndUpdate(req.params.productId, updateOps)
+  recipe
+    .findByIdAndUpdate(req.params.recipeId, updateOps)
     .exec()
     .then(result => {
       console.log(result);
@@ -84,8 +87,8 @@ router.patch("/:productId", (req, res, next) => {
     });
 });
 
-router.delete("/:productId", (req, res, next) => {
-  Product.findByIdAndDelete(req.params.productId)
+router.delete("/:recipeId", (req, res, next) => {
+  Recipe.findByIdAndDelete(req.params.recipeId)
     .exec()
     .then(docs => {
       if (docs) {

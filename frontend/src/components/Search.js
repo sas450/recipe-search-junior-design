@@ -6,12 +6,11 @@ import TextField from "@material-ui/core/TextField";
 class Search extends React.Component {
   render() {
     const validIngredients = [
+      { title: "Garlic" },
       { title: "Chicken" },
-      { title: "Cheese" },
-      { title: "Ramen" },
-      { title: "Chocolate" },
-      { title: "Pizza" },
-      { title: "Chinese Food" }
+      { title: "Spinach" },
+      { title: "Lemon" },
+      { title: "Salt" },
     ];
 
     const useStyles = makeStyles(theme => ({

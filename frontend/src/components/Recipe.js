@@ -5,8 +5,7 @@ export default class Recipe extends React.Component {
   state = {
     loading: true,
     recipes: [],
-    name: null,
-    price: null
+    ingredientName: null
   };
 
   async componentDidMount() {
@@ -14,18 +13,16 @@ export default class Recipe extends React.Component {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: "From ReactAPp ",
-        price: "69696969"
+        ingredientName: "garlic"
       })
     };
 
-    const url = "http://localhost:8080/products";
+    const url = "http://localhost:8080/recipes";
     const response = await fetch(url, requestOptions);
     const data = await response.json();
     console.log(data);
     this.setState({
-      name: data.createdProduct.name,
-      price: data.createdProduct.price,
+      recipes: data,
       loading: false
     });
   }
@@ -35,7 +32,7 @@ export default class Recipe extends React.Component {
       return <div>loading...</div>;
     }
 
-    if (!this.state.name) {
+    if (!this.state.recipes) {
       return <div>didn't get a post</div>;
     }
 
@@ -46,25 +43,13 @@ export default class Recipe extends React.Component {
     console.log(this.props.user_ingredients);
     return (
       <div>
-        <button onclick>POST DATA</button>
-        <ul>
-          <li> TITLE : {this.state.name}</li>
-          <li> PRICE : {this.state.price}</li>
-        </ul>
-      </div>
-
-      /*       <div>
-        {}
-        
         {this.state.recipes.map(recipe => (
-          <div key={shortid.generate()} style={{display: "flex",}}>
-            <div>{recipe.title}</div>
-            <img src={recipe.url} style = {{width : 10 , height : 10}}/>
+          <div key={shortid.generate()} style={{ display: "flex" }}>
+            <a href = {recipe.url}>{recipe.title}</a>
+            <img src={recipe.url} style={{ width: 10, height: 10 }} />
           </div>
         ))}
-        
-        }
-      </div> */
+      </div>
     );
   }
 }

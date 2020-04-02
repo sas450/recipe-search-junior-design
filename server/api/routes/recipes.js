@@ -21,33 +21,10 @@ router.get("/", (req, res, next) => {
       });
     });
 });
-
+//as of now the post route is used to populate the DB
+//the post route should be used for handling requests from the frontend
 router.post("/", (req, res, next) => {
-  const recipe = new Recipe({
-    _id: new mongoose.Types.ObjectId(),
-    title: req.body.title,
-    url: req.body.url,
-    ingredient: req.body.ingredient
-  });
-  recipe
-    .save()
-    .then(result => {
-      console.log(result);
-      res.status(201).json({
-        message: "Handling POST requests to /recipes",
-        createdrecipe: result
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({
-        error: err
-      });
-    });
-});
-
-router.get("/:ingredientName", (req, res, next) => {
-  const ingredientName = req.params.ingredientName;
+  const ingredientName = req.body.ingredientName;
   console.log(ingredientName);
   Recipe.find({ ingredient: new RegExp(ingredientName, "i") })
     .exec()

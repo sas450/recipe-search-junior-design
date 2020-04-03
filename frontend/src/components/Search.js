@@ -3,16 +3,10 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
+import validIngredients from "../bb_ingredient.json";
+
 class Search extends React.Component {
   render() {
-    const validIngredients = [
-      { title: "Garlic" },
-      { title: "Chicken" },
-      { title: "Spinach" },
-      { title: "Lemon" },
-      { title: "Salt" },
-    ];
-
     const useStyles = makeStyles(theme => ({
       root: {
         width: 1000,

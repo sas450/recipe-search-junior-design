@@ -21,8 +21,8 @@ router.get("/", (req, res, next) => {
       });
     });
 });
-//as of now the post route is used to populate the DB
-//the post route should be used for handling requests from the frontend
+
+
 router.post("/", (req, res, next) => {
   const ingredientName = req.body.ingredientName;
   console.log(ingredientName);

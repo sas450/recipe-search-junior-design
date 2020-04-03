@@ -1,5 +1,6 @@
 import React from "react";
 import shortid from "shortid";
+import "../basic-grid.css";
 
 export default class Recipe extends React.Component {
   state = {
@@ -41,7 +42,7 @@ export default class Recipe extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <div>loading...</div>;
+      return <div>input some ingredients</div>;
     }
 
     if (!this.state.recipes) {
@@ -49,11 +50,11 @@ export default class Recipe extends React.Component {
     }
 
     return (
-      <div>
+      <div class = "basic-grid">
         {this.state.recipes.map(recipe => (
-          <div key={shortid.generate()} style={{ display: "flex" }}>
+          <div key={shortid.generate()}>
             <a href={recipe.url}>{recipe.title}</a>
-            <img src={recipe.img} style={{ width: 10, height: 10 }} />
+            <img src={recipe.img} style={{ width: 250, height: 150 }} />
           </div>
         ))}
       </div>

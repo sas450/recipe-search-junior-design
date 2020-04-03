@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
 import validIngredients from "../bb_ingredient.json";
+import "../basic-grid.css";
 
 class Search extends React.Component {
   render() {
@@ -18,23 +19,25 @@ class Search extends React.Component {
     }));
 
     return (
-      <Autocomplete
-        multiple
-        id="tags-outlined"
-        options={validIngredients}
-        getOptionLabel={option => option.title}
-        filterSelectedOptions
-        onChange={this.props.updateIngredients}
-        renderInput={params => (
-          <TextField
-            {...params}
-            variant="outlined"
-            label="Ingredient Search"
-            placeholder="Enter an Ingredient"
-            fullWidth
-          />
-        )}
-      />
+      <div class="search">
+        <Autocomplete
+          multiple
+          id="tags-outlined"
+          options={validIngredients}
+          getOptionLabel={option => option.title}
+          filterSelectedOptions
+          onChange={this.props.updateIngredients}
+          renderInput={params => (
+            <TextField
+              {...params}
+              variant="outlined"
+              label="Ingredient Search"
+              placeholder="Enter an Ingredient"
+              fullWidth
+            />
+          )}
+        />
+      </div>
     );
   }
 }

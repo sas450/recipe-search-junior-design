@@ -3,3 +3,13 @@
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
+
+.card {
+  padding: 0.2em;
+}
+
+.search {
+  padding: 0.7em;
+  margin: auto;
+  width: 50%;
+}

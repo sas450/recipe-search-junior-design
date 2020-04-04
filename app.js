@@ -7,10 +7,6 @@ const mongoose = require("mongoose");
 const path = require("path");
 const recipeRoutes = require("./api/routes/recipes");
 
-app.use(express.static(path.join(__dirname, "frontend", "build")));
-
-// ...
-
 mongoose
   .connect(
     "mongodb+srv://sas450db:" +
@@ -41,12 +37,11 @@ app.use((req, res, next) => {
   next();
 });
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+}
+
 //Routes which should handle requests
 app.use("/recipes", recipeRoutes);
-
-// Right before your app.listen(), add this:
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
-});
 
 module.exports = app;

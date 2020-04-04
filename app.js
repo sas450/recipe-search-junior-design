@@ -4,8 +4,12 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+const path = require("path");
 const recipeRoutes = require("./api/routes/recipes");
+
+app.use(express.static(path.join(__dirname, "frontend", "build")));
+
+// ...
 
 mongoose
   .connect(
@@ -39,6 +43,11 @@ app.use((req, res, next) => {
 
 //Routes which should handle requests
 app.use("/recipes", recipeRoutes);
+
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+});
 
 app.use((req, res, next) => {
   const error = new Error("Not found");

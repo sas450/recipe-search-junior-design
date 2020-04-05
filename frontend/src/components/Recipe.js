@@ -23,7 +23,7 @@ export default class Recipe extends React.Component {
         })
       };
 
-      const url = "http://localhost:8080/recipes";
+      const url = "https://recipesearchenginedesign.herokuapp.com/recipes";
       const response = await fetch(url, requestOptions);
       const data = await response.json();
       console.log(data);

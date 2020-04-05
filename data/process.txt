@@ -1,7 +1,0 @@
-bb_scrape.ipynb scrapes the websites and writes to a bb.csv file 
-
-data_formatter(bb.csv) --> bb_format.csv
-
-from the terminal call   csvtojson bb_format.csv > bb.json
-
-recipe.js then imports that bb.json as a variable and inserts all data

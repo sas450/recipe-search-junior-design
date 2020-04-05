@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-var RecipeBag = require("/Users/samirsherlekar/Documents/Projects/recipe_search_engine/data/bb.json");
+var RecipeBag = require("./bb.json");
 
 const recipeSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,

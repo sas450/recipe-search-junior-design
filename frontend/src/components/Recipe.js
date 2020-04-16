@@ -42,7 +42,7 @@ export default class Recipe extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <div>input some ingredients</div>;
+      return <div></div>;
     }
 
     if (!this.state.recipes) {

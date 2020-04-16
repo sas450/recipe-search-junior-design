@@ -1,8 +1,8 @@
 .App {
-  background-color: white;
   font-size: calc(2px + 2vmin);
   text-align: center;
-  color: white;
+  background: rgb(242, 243, 239);
+  font-family: "Noto Sans", sans-serif;
 }
 
 .App-logo {

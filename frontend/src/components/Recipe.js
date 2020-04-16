@@ -53,8 +53,10 @@ export default class Recipe extends React.Component {
       <div class="basic-grid">
         {this.state.recipes.map(recipe => (
           <div class="card" key={shortid.generate()}>
-            <img src={recipe.img} style={{ width: 200, height: 150 }} />
-            <a href={recipe.url}>{recipe.title}</a>
+            <a href={recipe.url} target="_blank">
+              <img src={recipe.img} />
+            </a>
+            <p>{recipe.title}</p>
           </div>
         ))}
       </div>

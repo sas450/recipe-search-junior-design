@@ -14,16 +14,16 @@ export default class Recipe extends React.Component {
         prevProps.user_ingredients.length &&
       this.props.user_ingredients.length > 0
     ) {
-      console.log("im updating");
+      console.log(this.props.user_ingredients);
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ingredientName: this.props.user_ingredients[0].title
+          ingredientName: this.props.user_ingredients
         })
       };
-
-      const url = "https://recipesearchenginedesign.herokuapp.com/recipes";
+      const url = "http://localhost:8080/recipes";
+      //onst url = "https://recipesearchenginedesign.herokuapp.com/recipes";
       const response = await fetch(url, requestOptions);
       const data = await response.json();
       console.log(data);

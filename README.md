@@ -1,17 +1,7 @@
 # recipe-search
 
 git clone
-
-# To start front end
-
-cd frontend
-npm start
-
-localhost:3000
-
-# To start server (in another terminal window)
-
-cd server
-npm run start
-
-localhost:8080
+cd recipe_search_engine
+npm run install-client
+npm install
+npm run develop
